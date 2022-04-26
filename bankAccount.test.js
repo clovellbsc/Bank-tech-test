@@ -42,4 +42,10 @@ describe("BankAccount", () => {
     bank.withdraw(1000);
     expect(bank.transactionHistory).toHaveLength(2);
   });
+
+  it("should withraw a Transaction containing the amount into the transaction history", () => {
+    bank.withdraw(500);
+    expect(Transaction).toHaveBeenCalledWith(500);
+    expect(Transaction).toHaveBeenCalledTimes(1);
+  });
 });

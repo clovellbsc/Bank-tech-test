@@ -12,7 +12,8 @@ class BankAccount {
   }
 
   withdraw(amount) {
-    this.transactionHistory.push(amount);
+    const withdrawal = new Transaction(amount);
+    this.transactionHistory.push(withdrawal);
   }
 }
 
