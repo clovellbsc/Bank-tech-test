@@ -2,16 +2,16 @@ const Statement = require("./Statement");
 
 const consoleSpy = jest.spyOn(console, "log").mockImplementation();
 
-describe("PrintStatement", () => {
+describe("Statement", () => {
   let arrayOfObjects;
   let arrayOneObject;
   beforeEach(() => {
     arrayOfObjects = [
-      { date: "14/01/2023", amount: 500, deposit: false },
-      { date: "13/01/2023", amount: 2000, deposit: true },
-      { date: "10/01/2023", amount: 1000, deposit: true },
+      { date: "14/01/2023", amount: 500, isDeposit: false },
+      { date: "13/01/2023", amount: 2000, isDeposit: true },
+      { date: "10/01/2023", amount: 1000, isDeposit: true },
     ];
-    arrayOneObject = [{ date: "14/01/2023", amount: 2000, deposit: true }];
+    arrayOneObject = [{ date: "14/01/2023", amount: 2000, isDeposit: true }];
     consoleSpy.mockClear();
   });
 
@@ -33,7 +33,7 @@ describe("PrintStatement", () => {
       "date || credit || debit || balance"
     );
     expect(console.log).toHaveBeenLastCalledWith(
-      "14/01/2023||2000.00|| || 2000.00"
+      "14/01/2023 || 2000.00 || || 2000.00"
     );
   });
 
@@ -45,12 +45,14 @@ describe("PrintStatement", () => {
     expect(console.log).toHaveBeenCalledWith(
       "date || credit || debit || balance"
     );
-    expect(console.log).toHaveBeenCalledWith("14/01/2023|| ||500.00|| 2500.00");
     expect(console.log).toHaveBeenCalledWith(
-      "13/01/2023||2000.00|| || 3000.00"
+      "14/01/2023 || || 500.00 || 2500.00"
+    );
+    expect(console.log).toHaveBeenCalledWith(
+      "13/01/2023 || 2000.00 || || 3000.00"
     );
     expect(console.log).toHaveBeenLastCalledWith(
-      "10/01/2023||1000.00|| || 1000.00"
+      "10/01/2023 || 1000.00 || || 1000.00"
     );
   });
 });

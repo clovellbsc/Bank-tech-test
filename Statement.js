@@ -1,9 +1,8 @@
-const { CustomConsole } = require("@jest/console");
-
 class Statement {
   constructor(transactionHistory) {
     this.transactionHistory = transactionHistory;
   }
+
   print() {
     this.#header();
     if (this.transactionHistory.length) {
@@ -17,13 +16,13 @@ class Statement {
 
   #formatForPrint() {
     this.transactionHistory.forEach((transaction, index) => {
-      const deposit = transaction.deposit
-        ? `${transaction.amount.toFixed(2)}|| `
-        : ` ||${transaction.amount.toFixed(2)}`;
+      const deposit = transaction.isDeposit
+        ? `${transaction.amount.toFixed(2)} ||`
+        : `|| ${transaction.amount.toFixed(2)}`;
       console.log(
         `${
           transaction.date
-        }||${deposit}|| ${this.#balanceUpToCurrentTransaction(index)}`
+        } || ${deposit} || ${this.#balanceUpToCurrentTransaction(index)}`
       );
     });
   }
@@ -32,7 +31,7 @@ class Statement {
     const transactions = this.transactionHistory.slice(index);
     let balance = 0;
     transactions.forEach((transaction) => {
-      if (transaction.deposit) {
+      if (transaction.isDeposit) {
         balance += transaction.amount;
       } else {
         balance -= transaction.amount;
