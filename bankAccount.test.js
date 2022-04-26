@@ -1,10 +1,13 @@
-const { expect } = require("expect");
 const BankAccount = require("./bankAccount");
+const Transaction = require("./transaction");
+
+jest.mock("./transaction");
 
 describe("BankAccount", () => {
   let bank;
 
   beforeEach(() => {
+    Transaction.mockClear();
     bank = new BankAccount();
   });
 
@@ -21,5 +24,11 @@ describe("BankAccount", () => {
     bank.deposit(500);
     bank.deposit(1000);
     expect(bank.transactionHistory).toHaveLength(2);
+  });
+
+  it("should deposit a Transaction containing the amount into the transaction history", () => {
+    bank.deposit(500);
+    expect(Transaction).toHaveBeenCalledWith(500);
+    expect(Transaction).toHaveBeenCalledTimes(1);
   });
 });
