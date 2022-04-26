@@ -1,6 +1,6 @@
 class Transaction {
   constructor(amount) {
-    this.date = new Date();
+    this.date = new Date().toLocaleDateString();
     this.amount = amount;
     this.isDeposit = false;
   }

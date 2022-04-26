@@ -5,7 +5,7 @@ describe("Transaction", () => {
   it("should initialise with the date", () => {
     advanceTo();
     const transaction = new Transaction();
-    expect(transaction.date).toEqual(new Date(0));
+    expect(transaction.date).toEqual(new Date(0).toLocaleDateString());
   });
 
   it("should initialise with an amount", () => {
