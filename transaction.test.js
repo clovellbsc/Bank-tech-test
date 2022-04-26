@@ -13,4 +13,9 @@ describe("Transaction", () => {
     const transaction = new Transaction(500);
     expect(transaction.amount).toEqual(500);
   });
+
+  it("should initialise with an amount equal to the value passed in", () => {
+    const transaction = new Transaction(800);
+    expect(transaction.amount).toEqual(800);
+  });
 });
