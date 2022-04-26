@@ -1,8 +1,10 @@
 const Transaction = require("./transaction");
+const Statement = require("./Statement");
 
 class BankAccount {
-  constructor() {
+  constructor(statementClass = Statement) {
     this.transactionHistory = [];
+    this.statementClass = statementClass;
   }
 
   deposit(amount) {
@@ -14,6 +16,15 @@ class BankAccount {
   withdraw(amount) {
     const withdrawal = new Transaction(amount);
     this.transactionHistory.push(withdrawal);
+  }
+
+  printStatement() {
+    const reverseChronologicalTransactionHistory =
+      this.transactionHistory.reverse();
+    const statement = new this.statementClass(
+      reverseChronologicalTransactionHistory
+    );
+    statement.print();
   }
 }
 
