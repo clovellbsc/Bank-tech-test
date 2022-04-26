@@ -3,8 +3,8 @@ class BankAccount {
     this.transactionHistory = [];
   }
 
-  deposit() {
-    this.transactionHistory = [1];
+  deposit(amount) {
+    this.transactionHistory.push(amount);
   }
 }
 

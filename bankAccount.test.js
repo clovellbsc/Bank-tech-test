@@ -16,4 +16,10 @@ describe("BankAccount", () => {
     bank.deposit(500);
     expect(bank.transactionHistory).toHaveLength(1);
   });
+
+  it("should be able to add a two deposits into the transaction history", () => {
+    bank.deposit(500);
+    bank.deposit(1000);
+    expect(bank.transactionHistory).toHaveLength(2);
+  });
 });
