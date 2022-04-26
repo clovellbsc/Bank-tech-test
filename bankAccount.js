@@ -11,8 +11,8 @@ class BankAccount {
     this.transactionHistory.push(deposit);
   }
 
-  withdraw() {
-    this.transactionHistory = [500];
+  withdraw(amount) {
+    this.transactionHistory.push(amount);
   }
 }
 

@@ -36,4 +36,10 @@ describe("BankAccount", () => {
     bank.withdraw(500);
     expect(bank.transactionHistory).toHaveLength(1);
   });
+
+  it("should be able to add a two withdrawals into the transaction history", () => {
+    bank.withdraw(500);
+    bank.withdraw(1000);
+    expect(bank.transactionHistory).toHaveLength(2);
+  });
 });
