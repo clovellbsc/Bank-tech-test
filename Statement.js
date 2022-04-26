@@ -7,7 +7,7 @@ class Statement {
   print() {
     this.#header();
     if (this.transactionHistory.length) {
-      this.#iterator();
+      this.#formatForPrint();
     }
   }
 
@@ -15,24 +15,16 @@ class Statement {
     console.log("date || credit || debit || balance");
   }
 
-  #iterator() {
-    let balance = 0;
+  #formatForPrint() {
     this.transactionHistory.forEach((transaction, index) => {
-      if (transaction.deposit) {
-        balance += transaction.amount;
-        console.log(
-          `${transaction.date}||${transaction.amount.toFixed(
-            2
-          )}|| || ${this.#balanceUpToCurrentTransaction(index)}`
-        );
-      } else {
-        balance -= transaction.amount;
-        console.log(
-          `${transaction.date}|| ||${transaction.amount.toFixed(
-            2
-          )}|| ${this.#balanceUpToCurrentTransaction(index)}`
-        );
-      }
+      const deposit = transaction.deposit
+        ? `${transaction.amount.toFixed(2)}|| `
+        : ` ||${transaction.amount.toFixed(2)}`;
+      console.log(
+        `${
+          transaction.date
+        }||${deposit}|| ${this.#balanceUpToCurrentTransaction(index)}`
+      );
     });
   }
 
