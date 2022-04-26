@@ -5,9 +5,12 @@ const consoleSpy = jest.spyOn(console, "log").mockImplementation();
 describe("PrintStatement", () => {
   let arrayOfObjects;
   let arrayOneObject;
-
   beforeEach(() => {
-    arrayOfObjects = [];
+    arrayOfObjects = [
+      { date: "14/01/2023", amount: 500, deposit: false },
+      { date: "13/01/2023", amount: 2000, deposit: true },
+      { date: "10/01/2023", amount: 1000, deposit: true },
+    ];
     arrayOneObject = [{ date: "14/01/2023", amount: 2000, deposit: true }];
     consoleSpy.mockClear();
   });
@@ -31,6 +34,23 @@ describe("PrintStatement", () => {
     );
     expect(console.log).toHaveBeenLastCalledWith(
       "14/01/2023||2000.00|| || 2000.00"
+    );
+  });
+
+  it("should take array containing multiple objects and print it in format", () => {
+    const statement = new Statement(arrayOfObjects);
+    statement.print();
+
+    expect(console.log).toBeCalledTimes(4);
+    expect(console.log).toHaveBeenCalledWith(
+      "date || credit || debit || balance"
+    );
+    expect(console.log).toHaveBeenCalledWith("14/01/2023|| ||500.00|| 2500.00");
+    expect(console.log).toHaveBeenCalledWith(
+      "13/01/2023||2000.00|| || 3000.00"
+    );
+    expect(console.log).toHaveBeenLastCalledWith(
+      "10/01/2023||1000.00|| || 1000.00"
     );
   });
 });
