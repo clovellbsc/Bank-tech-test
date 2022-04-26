@@ -31,4 +31,9 @@ describe("BankAccount", () => {
     expect(Transaction).toHaveBeenCalledWith(500);
     expect(Transaction).toHaveBeenCalledTimes(1);
   });
+
+  it("should be able to add a withdrawal into the transaction history", () => {
+    bank.withdraw(500);
+    expect(bank.transactionHistory).toHaveLength(1);
+  });
 });

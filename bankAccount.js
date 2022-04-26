@@ -10,10 +10,10 @@ class BankAccount {
     deposit.deposit();
     this.transactionHistory.push(deposit);
   }
-}
 
-bank = new BankAccount();
-bank.deposit(500);
-console.log(bank.transactionHistory);
+  withdraw() {
+    this.transactionHistory = [500];
+  }
+}
 
 module.exports = BankAccount;
