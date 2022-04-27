@@ -35,7 +35,7 @@ cd Bank_tech_test
 ```
 
 ## Ensuring Dependencies Are Installed
-if you do not have node installed on your device you can go to the [Named Link](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm "NPM documentation")
+if you do not have node installed on your device you can go to the [NPM documentation](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm "NPM documentation")
 
 if/once you have node installed on your device copy the following code and hit enter
 ```
@@ -43,7 +43,7 @@ npm install
 ```
 
 ## Running The Application
-The application is run through a [Named Link](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop "REPL") called [Named Link](https://nodejs.org/en/ "Node"). To run node, copy the following into your terminal and hit enter
+The application is run through a [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop "REPL") called [Node](https://nodejs.org/en/ "Node"). To run node, copy the following into your terminal and hit enter
 ```
 node
 ```
@@ -79,7 +79,7 @@ date || credit || debit || balance
 ```
 
 ## Running Tests
-To run the test, which were written using [Named Link](https://jestjs.io/ "Jest"), copy the following code into your terminal and hit enter
+To run the test, which were written using [Jest](https://jestjs.io/ "Jest"), copy the following code into your terminal and hit enter
 ```
 jest
 ```
