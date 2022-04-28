@@ -4,20 +4,22 @@ class Statement {
   }
 
   print() {
-    this.#header();
-    if (this.transactionHistory.length) {
-      this.#formatForPrint();
-    }
+    this.transactionHistory.length
+      ? console.log(this.#header() + "\n" + this.#formatForPrint())
+      : console.log(this.#header());
   }
 
   #header() {
-    console.log("date || credit || debit || balance");
+    return "date || credit || debit || balance";
   }
 
   #formatForPrint() {
-    this.transactionHistory.forEach((transaction, index) => {
-      console.log(this.#formatTransaction(transaction, index));
-    });
+    const formattedTransactions = this.transactionHistory.map(
+      (transaction, index) => {
+        return this.#formatTransaction(transaction, index);
+      }
+    );
+    return formattedTransactions.join("\n");
   }
 
   #formatTransaction(transaction, index) {

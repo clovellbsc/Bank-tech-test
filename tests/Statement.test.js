@@ -1,6 +1,6 @@
 const Statement = require("../src/Statement");
 
-const consoleSpy = jest.spyOn(console, "log").mockImplementation();
+const consoleSpy = jest.spyOn(console, "log"); //.mockImplementation();
 
 describe("Statement", () => {
   let arrayOfObjects;
@@ -28,12 +28,9 @@ describe("Statement", () => {
     const statement = new Statement(arrayOneObject);
     statement.print();
 
-    expect(console.log).toBeCalledTimes(2);
+    expect(console.log).toBeCalledTimes(1);
     expect(console.log).toHaveBeenCalledWith(
-      "date || credit || debit || balance"
-    );
-    expect(console.log).toHaveBeenLastCalledWith(
-      "14/01/2023 || 2000.00 || || 2000.00"
+      "date || credit || debit || balance\n14/01/2023 || 2000.00 || || 2000.00"
     );
   });
 
@@ -41,18 +38,9 @@ describe("Statement", () => {
     const statement = new Statement(arrayOfObjects);
     statement.print();
 
-    expect(console.log).toBeCalledTimes(4);
+    expect(console.log).toBeCalledTimes(1);
     expect(console.log).toHaveBeenCalledWith(
-      "date || credit || debit || balance"
-    );
-    expect(console.log).toHaveBeenCalledWith(
-      "14/01/2023 || || 500.00 || 2500.00"
-    );
-    expect(console.log).toHaveBeenCalledWith(
-      "13/01/2023 || 2000.00 || || 3000.00"
-    );
-    expect(console.log).toHaveBeenLastCalledWith(
-      "10/01/2023 || 1000.00 || || 1000.00"
+      "date || credit || debit || balance\n14/01/2023 || || 500.00 || 2500.00\n13/01/2023 || 2000.00 || || 3000.00\n10/01/2023 || 1000.00 || || 1000.00"
     );
   });
 });
