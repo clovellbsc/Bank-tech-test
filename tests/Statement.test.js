@@ -1,6 +1,6 @@
 const Statement = require("../src/Statement");
 
-const consoleSpy = jest.spyOn(console, "log"); //.mockImplementation();
+const consoleSpy = jest.spyOn(console, "log").mockImplementation();
 
 describe("Statement", () => {
   let arrayOfObjects;
