@@ -16,28 +16,42 @@ class Statement {
 
   #formatForPrint() {
     this.transactionHistory.forEach((transaction, index) => {
-      const deposit = transaction.isDeposit
-        ? `${transaction.amount.toFixed(2)} ||`
-        : `|| ${transaction.amount.toFixed(2)}`;
-      console.log(
-        `${
-          transaction.date
-        } || ${deposit} || ${this.#balanceUpToCurrentTransaction(index)}`
-      );
+      console.log(this.#formatTransaction(transaction, index));
     });
+  }
+
+  #formatTransaction(transaction, index) {
+    return `${transaction.date} || ${this.#checkForDepositFormatting(
+      transaction
+    )} || ${this.#balanceUpToCurrentTransaction(index)}`;
+  }
+
+  #checkForDepositFormatting(transaction) {
+    return transaction.isDeposit
+      ? `${transaction.amount.toFixed(2)} ||`
+      : `|| ${transaction.amount.toFixed(2)}`;
   }
 
   #balanceUpToCurrentTransaction(index) {
     const transactions = this.transactionHistory.slice(index);
-    let balance = 0;
-    transactions.forEach((transaction) => {
-      if (transaction.isDeposit) {
-        balance += transaction.amount;
-      } else {
-        balance -= transaction.amount;
-      }
-    });
-    return balance.toFixed(2);
+    return this.#balanceOfTransactions(transactions);
+  }
+
+  #balanceOfTransactions(transactionArray) {
+    const balances = transactionArray.map((transaction) =>
+      this.#balanceOfTransaction(transaction)
+    );
+    return this.#sumArray(balances);
+  }
+
+  #balanceOfTransaction(transaction) {
+    return transaction.isDeposit ? transaction.amount : -transaction.amount;
+  }
+
+  #sumArray(array) {
+    return array
+      .reduce((total, currentBalance) => total + currentBalance)
+      .toFixed(2);
   }
 }
 
