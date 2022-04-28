@@ -20,8 +20,7 @@ class BankAccount {
   }
 
   printStatement() {
-    const reverseChronologicalTransactionHistory =
-      this.transactionHistory.reverse();
+    const reverseChronologicalTransactionHistory = this.transactionHistory;
     const statement = new this.statementClass(
       reverseChronologicalTransactionHistory
     );

@@ -1,6 +1,6 @@
 class Statement {
   constructor(transactionHistory) {
-    this.transactionHistory = transactionHistory;
+    this.transactionHistory = transactionHistory.reverse();
   }
 
   print() {

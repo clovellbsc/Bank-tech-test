@@ -1,15 +1,15 @@
 const Statement = require("../src/Statement");
 
-const consoleSpy = jest.spyOn(console, "log").mockImplementation();
+const consoleSpy = jest.spyOn(console, "log"); //.mockImplementation();
 
 describe("Statement", () => {
   let arrayOfObjects;
   let arrayOneObject;
   beforeEach(() => {
     arrayOfObjects = [
-      { date: "14/01/2023", amount: 500, isDeposit: false },
-      { date: "13/01/2023", amount: 2000, isDeposit: true },
       { date: "10/01/2023", amount: 1000, isDeposit: true },
+      { date: "13/01/2023", amount: 2000, isDeposit: true },
+      { date: "14/01/2023", amount: 500, isDeposit: false },
     ];
     arrayOneObject = [{ date: "14/01/2023", amount: 2000, isDeposit: true }];
     consoleSpy.mockClear();
