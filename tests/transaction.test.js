@@ -1,5 +1,5 @@
 const { advanceBy, advanceTo, clear, version } = require("jest-date-mock");
-const Transaction = require("./transaction");
+const Transaction = require("../src/transaction");
 
 describe("Transaction", () => {
   it("should initialise with the date", () => {

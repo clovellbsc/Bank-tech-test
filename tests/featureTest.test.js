@@ -1,4 +1,4 @@
-const BankAccount = require("./bankAccount");
+const BankAccount = require("../src/bankAccount");
 
 const consoleSpy = jest.spyOn(console, "log").mockImplementation();
 

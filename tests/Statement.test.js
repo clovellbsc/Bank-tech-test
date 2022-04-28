@@ -1,4 +1,4 @@
-const Statement = require("./Statement");
+const Statement = require("../src/Statement");
 
 const consoleSpy = jest.spyOn(console, "log").mockImplementation();
 
